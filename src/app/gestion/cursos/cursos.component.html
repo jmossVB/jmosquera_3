@@ -1,0 +1,29 @@
+<div class="container mt-5">
+    <h2 class="text-center">Lista de cursos</h2>
+    <div class="d-flex justify-content-center">
+        <a class="btn btn-dark" href="cursos/cursosForm">Nuevo Curso</a>
+    </div>
+    <div class="container mt-5">
+
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>nombre</th>
+                <th>horas</th>
+                <th>creditos</th>
+                <th>categoria</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let curso of cursos">
+                <td>{{curso.id}}</td>
+                <td>{{curso.nombre}}</td>
+                <td>{{curso.horas}}</td>
+                <td>{{curso.creditos}}</td>
+                <td>{{curso.categoria}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

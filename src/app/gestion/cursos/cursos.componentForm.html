@@ -1,0 +1,95 @@
+<div class="container mt-5 mb-5">
+
+  <h4 class=" text-center">Datos del curso</h4>
+
+  <div [hidden]="enviado">
+    <form (ngSubmit)="onSubmit()" #cursoForm="ngForm">
+      <div class="form.group">
+        <table class="table">
+          <tr>
+            <td>
+              <label for="id">Id</label>
+            </td>
+            <td>
+              <input type="text" class="form-control" id="id" required [(ngModel)]="modelo.id" name="id">
+            </td>
+          </tr>
+          <tr>
+            <td><label for="nombre">Nombre</label>
+            </td>
+            <td>
+              <input type="text" class="form-control" id="nombre" required [(ngModel)]="modelo.nombre" name="nombre">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="creditos">Horas</label>
+            </td>
+            <td>
+              <select class="form-control" id="horas" required [(ngModel)]="modelo.horas" name="horas">
+                <option *ngFor="let horas of horas" [value]="horas">
+                  {{horas}}
+                </option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="creditos">Creditos</label>
+            </td>
+            <td>
+              <select class="form-control" id="creditos" required [(ngModel)]="modelo.creditos" name="credito">
+                <option *ngFor="let credito of creditos" [value]="credito">
+                  {{credito}}
+                </option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="creditos">Categoria</label>
+            </td>
+            <td>
+              <select class="form-control" id="categoria" required [(ngModel)]="modelo.categoria" name="categoria">
+                <option *ngFor="let categoria of categoria" [value]="categoria">
+                  {{categoria}}
+                </option>
+              </select>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+
+      <button type="submit" class="btn btn-dark" [disabled]="!cursoForm.form.valid">Enviar</button>
+    </form>
+  </div>
+
+
+  <div [hidden]="!enviado">
+    <h6>Formulario enviado</h6>
+    <table>
+      <tr>
+        <td>Id: </td>
+        <td>{{modelo.id}}</td>
+      </tr>
+      <tr>
+        <td>Nombre:</td>
+        <td> {{modelo.nombre}}</td>
+      </tr>
+      <tr>
+        <td>horas:</td>
+        <td> {{modelo.horas}}</td>
+      </tr>
+      <tr>
+        <td>creditos:</td>
+        <td> {{modelo.creditos}}</td>
+      </tr>
+      <tr>
+        <td>Categoria:</td>
+        <td> {{modelo.categoria}}</td>
+      </tr>
+    </table>
+    <button class="btn btn-dark" (click)="enviado=false">Editar</button>
+  </div>
+</div>

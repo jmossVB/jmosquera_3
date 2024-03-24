@@ -1,0 +1,98 @@
+<div class="container mt-5 mb-5">
+
+  <h4 class=" text-center">Formulario de Matrícula</h4>
+  <br>
+  <form (ngSubmit)="submitForm()" #matriculaForm="ngForm">
+    <table class="table table-hover">
+      <tr>
+        <td>
+          <label>Nombres:</label>
+        </td>
+        <td>
+          <input class="form-control" type="text" name="nombres" required [(ngModel)]="alumnomat.nombres">
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label>Apellidos:</label>
+        </td>
+        <td>
+          <input class="form-control" type="text" name="apellidos" required [(ngModel)]="alumnomat.apellidos">
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label>Fecha de Nacimiento:</label>
+        </td>
+        <td>
+          <input class="form-control" type="date" name="fechaNacimiento" [(ngModel)]="alumnomat.fechadenacimiento"
+            required>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label>Dirección:</label>
+        </td>
+        <td>
+          <input class="form-control" type="text" name="direccion" [(ngModel)]="alumnomat.direccion" required>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label>Correo:</label>
+        </td>
+        <td>
+          <input class="form-control" type="email" name="correo" [(ngModel)]="alumnomat.correo" required>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label>Teléfono:</label>
+        </td>
+        <td>
+          <input class="form-control" type="tel" name="telefono" [(ngModel)]="alumnomat.telefono" required>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label>Cursos:</label>
+        </td>
+        <td>
+          <select class="form-control" name="cursos" [(ngModel)]="cursosSeleccionados" multiple required>
+            <option *ngFor="let curso of cursosmat" [value]="curso.id">{{ curso.nombre }}</option>
+          </select>
+
+        </td>
+      </tr>
+    </table>
+
+    <div class="text-left">
+      <button class="btn btn-dark" type="submit" [disabled]="!matriculaForm.form.valid">Matricular</button>
+    </div>
+    <h4 class=" text-center">Listado de Matrículas</h4>
+    <table class="table table-striped" *ngIf="matriculas.length">
+      <thead>
+        <tr>
+          <th>Nombre del Alumno</th>
+          <th>Correo </th>
+          <th>Telefono</th>
+          <th>Curso Matriculado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let matricula of matriculas">
+          <td>{{ matricula.alumno.nombres }} {{ matricula.alumno.apellidos }}</td>
+          <td>{{ matricula.alumno.correo }}</td>
+          <td>{{ matricula.alumno.telefono }}</td>
+          <td>{{ matricula.curso.nombre }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+</div>

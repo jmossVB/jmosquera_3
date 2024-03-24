@@ -1,0 +1,115 @@
+<div class="container mt-5 mb-5">
+  <h4 class=" text-center">Datos del alumno</h4><br>
+  <div [hidden]="enviado">
+    <form (ngSubmit)="onSubmit()" #alumnoForm="ngForm">
+      <div class="form.group">
+        <table class="table">
+          <tr>
+            <td>
+              <label  for="id">Id</label>
+            </td>
+            <td>
+              <input type="text" class="form-control" id="id" required [(ngModel)]="modelo.id" name="id">
+            </td>
+          </tr>
+          <tr>
+            <td><label  for="nombre">Nombres</label>
+            </td>
+            <td>
+              <input type="text" class="form-control" id="nombre" required [(ngModel)]="modelo.nombres" name="nombre">
+
+            </td>
+          </tr>
+          <tr>
+            <td><label for="apellido">Apellidos</label>
+            </td>
+            <td>
+              <input type="text" class="form-control" id="apellido" required [(ngModel)]="modelo.apellidos"
+                name="apellido">
+
+            </td>
+          </tr>
+          <tr>
+            <td><label for="fechadenacimiento">Fecha de Nacimiento</label>
+            </td>
+            <td>
+              <input type="text" class="form-control" id="fechadenacimiento" required
+                [(ngModel)]="modelo.fechadenacimiento" name="fechadenacimiento">
+
+            </td>
+          </tr>
+          <tr>
+            <td><label for="direccion">Direción</label>
+            </td>
+            <td>
+
+              <input type="text" class="form-control" id="direccion" required [(ngModel)]="modelo.direccion"
+                name="direccion">
+
+            </td>
+          </tr>
+          <tr>
+            <td><label for="correo">Correo</label>
+            </td>
+            <td>
+
+              <input type="text" class="form-control" id="correo" required [(ngModel)]="modelo.correo" name="correo">
+
+            </td>
+          </tr>
+          <tr>
+            <td><label for="telefono">Telefono</label>
+            </td>
+            <td>
+
+              <input type="text" class="form-control" id="telefono" required [(ngModel)]="modelo.telefono"
+                name="telefono">
+
+            </td>
+          </tr>
+
+        </table>
+
+      </div>
+
+
+      <button type="submit" class="btn btn-dark" [disabled]="!alumnoForm.form.valid">Enviar</button>
+    </form>
+  </div>
+
+  <div [hidden]="!enviado">
+    <h6>Formulario enviado</h6>
+    <table>
+      <tr>
+        <td>Id:</td>
+        <td>{{modelo.id}}</td>
+      </tr>
+      <tr>
+        <td>Nombres</td>
+        <td>{{modelo.nombres}}</td>
+      </tr>
+      <tr>
+        <td>Apellidos</td>
+        <td>{{modelo.apellidos}}</td>
+      </tr>
+      <tr>
+        <td>Fecha de Nacimiento</td>
+        <td>{{modelo.fechadenacimiento}}</td>
+      </tr>
+      <tr>
+        <td>Dirección</td>
+        <td>{{modelo.direccion}}</td>
+      </tr>
+      <tr>
+        <td>Correo</td>
+        <td>{{modelo.correo}}</td>
+      </tr>
+      <tr>
+        <td>Telefono</td>
+        <td>{{modelo.telefono}}</td>
+      </tr>
+    </table>
+    <button class="btn btn-dark" (click)="enviado=false">Editar</button>
+  </div>
+  <div class="container mt-5 mb-5"></div>
+</div>

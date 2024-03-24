@@ -1,0 +1,43 @@
+<div class="container mt-5 mb-5">
+
+    <h4 class=" text-center">Pagos</h4>
+    <br>
+    <form id="formularioPago" (ngSubmit)="procesarPago()"  #pagoForm="ngForm">
+
+        <div class="form-group">
+            <label for="numMatricula">Codigo de Matricula: * Solo numeros (ejm: 1234234)</label>
+            <input type="text" id="numMatricula" name="numMatricula" class="form-control"
+                placeholder="Ingrese cod de Matricula" required pattern="[0-9]+"
+                title="Por favor, ingrese solo números" [(ngModel)]="numMatricula">
+        </div>
+        <div class="form-group">
+            <label for="monPago">Monto de Pago: * solo numeros (ejm: 100.50)</label>
+            <input type="text" id="monPago" name="monPago" class="form-control" placeholder="Ingrese Monto a pagar"
+                required pattern="^\d+(\.\d{1,2})?$" title="Por favor, ingrese solo números" [(ngModel)]="monPago">
+        </div>
+        <div class="form-group">
+            <label for="numTarjeta">Número de tarjeta VISA: * Soo números</label>
+            <input type="text" id="numTarjeta" name="numTarjeta" class="form-control"
+                placeholder="Ingrese el número de la tarjeta" required pattern="[0-9]+"
+                title="Por favor, ingrese solo números" [(ngModel)]="numTarjeta">
+        </div>
+        <div class="form-group">
+            <label for="fecVencimiento">Fecha de vencimiento (MM/YY): * Debe cumplir el formato</label>
+            <input type="text" id="fecVencimiento" name="fecVencimiento" class="form-control" placeholder="MM/YY" required
+                pattern="^(0[1-9]|1[0-2])\/\d{2}$" title="Por favor, ingrese el formato MM/YY" [(ngModel)]="fecVencimiento">
+        </div>
+        <div class="form-group">
+            <label for="codcvv">CVV: * solo 3 numeros</label>
+            <input type="password" id="codcvv" name="codcvv" class="form-control" placeholder="***" required
+                pattern="[0-9]{3}" title="El CVV debe contener 3 dígitos"  [(ngModel)]="codcvv">
+        </div>
+        <br>  <br>  
+        <button type="submit" class="btn btn-dark"  [disabled]="!pagoForm.form.valid">Enviar Pago</button>
+        <br>  <br>  <br>
+    </form>
+
+    <div *ngIf="pagoProcesado" class="alert alert-success">
+        Pago procesado satisfactoriamente.
+      </div>
+</div>
+
